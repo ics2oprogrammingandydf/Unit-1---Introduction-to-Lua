@@ -41,7 +41,7 @@ Runtime:addEventListener("enterFrame", MoveShip)
 local scrollSpeed = -3
 
 --character image with the width and height
-local octopus = display.newImageRect("images/octopus.png", 200, 200)
+local octopus = display.newImageRect("images/background_octopus.png", 200, 200)
 
 --set the image to be transparent
 octopus.alpha = 1
