@@ -1,7 +1,4 @@
------------------------------------------------------------------------------------------
---
--- main.lua
---
------------------------------------------------------------------------------------------
-
--- Your code here
+-- Title: TouchAndDrag
+-- Name: Andy Du-frigstad
+-- Course: ICS2O/3C
+-- This program allows you to touch and drag 2 images across the screen. it will also have a background.
