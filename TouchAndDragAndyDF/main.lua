@@ -1,7 +1,7 @@
 -- Title: TouchAndDrag
 -- Name: Andy Du-frigstad
 -- Course: ICS2O/3C
-<<<<<<< HEAD
+
 --allows you to touch and drag images
 
 --local Variables
@@ -110,7 +110,7 @@ end
 
 --add the listener
 girl5:addEventListener("touch", Girl5Listener)
-=======
+
 -- This program allows you to touch and drag 2 images across the screen. it will also have a background.
 
 --hide the status bar
@@ -123,4 +123,4 @@ local yellowGirlWidth = yellowGirl.width
 local yellowGirlHeight = yellowGirl.height
 local BlueGirl = display.newImageRect("Images/blueGirl.png", 100, 100)
 local blueGirlWidth = blueGirl
->>>>>>> 801e543bdd793cc79cceeda279babb3a7df5ed53
+
