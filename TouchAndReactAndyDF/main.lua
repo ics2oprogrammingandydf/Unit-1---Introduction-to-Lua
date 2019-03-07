@@ -4,11 +4,11 @@
 -- This program does something when I click on the button.
 
 --set the background colour.
-display.setDefault ("background", 153/255, 0/255, 0/255)
+
 
 --hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
-
+display.setDefault ("background", 153/255, 0/255, 0/255)
 --create the blue button, set it's position and make it visible
 local blueButton = display.newImageRect("Images/Fast Button Inactive@2x.png", 198, 96)
 blueButton.x = display.contentWidth/2
@@ -17,8 +17,8 @@ blueButton.isVisible = true
 
 --creating the red button, set it's position and make it invisible 
 local redButton = display.newImageRect("Images/Fast Button Active@2x.png", 198, 96)
-redButton.x = display.contentHeight/2
-redButton.y = display.contentWidth/2
+redButton.x = display.contentHeight/1.5
+redButton.y = display.contentWidth/2.68
 redButton.isVisible = false
 
 --reate text Object, set it's position and make it invisible 
@@ -35,7 +35,7 @@ textObject.isVisible = false
 local function BlueButtonListener(touch)
 	if(touch.phase == "began") then
 		blueButton.isVisible = false
-		redButton = true
+		redButton.isVisible = true
 		textObject.isVisible = true
 	end
 
@@ -46,11 +46,14 @@ local function BlueButtonListener(touch)
 	end
 end
 
+-- Function:RedButtonListener
+-- Input: touch listener
+-- make the red button disappear and make the blue button appear
 local function RedButtonListener(touch)
 	if(touch.phase == "began") then
-		blueButton.isVisible = true
-		redButton.isVisible = false
-		textObject.isVisible = false
+		blueButton.isVisible = false
+		redButton.isVisible = true
+		textObject.isVisible = true
 	end
 
 	if (touch.phase == "ended") then
@@ -59,7 +62,6 @@ local function RedButtonListener(touch)
 		textObject.isVisible = true
 	end
 end
-
 
 --add the respective listeners to each object
 blueButton:addEventListener("touch", BlueButtonListener)
