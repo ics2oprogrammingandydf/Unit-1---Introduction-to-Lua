@@ -28,6 +28,16 @@ textObject.y = display.contentHeight/3
 textObject:setTextColor (204/255, 204/255, 0/255)
 textObject.isVisible = false
 
+--making the second Image
+local Dude = display.newImageRect("Images/Saradomin_armour_set_(lg)_equipped.png", 96, 198)
+Dude.x = display.contentHeight/2
+Dude.y = display.contentWidth/2
+Dude.isVisible = false
+
+--adding the sound
+local BellSound = audio.loadSound( "Sounds/zapsplat_bell_service_desk_press_x5_18040.mp3" )
+local BellChannel
+
 -- Function:BlueButtonListener
 -- Input: touch listener
 -- Output: None
@@ -37,12 +47,16 @@ local function BlueButtonListener(touch)
 		blueButton.isVisible = false
 		redButton.isVisible = true
 		textObject.isVisible = true
+		Dude.isVisible = true
+		BellChannel = audio.play(BellSound)
 	end
 
 	if (touch.phase == "ended") then
 		blueButton.isVisible = true
 		redButton.isVisible = false
 		textObject.isVisible = false
+		Dude.isVisible = false
+		
 	end
 end
 
@@ -57,9 +71,10 @@ local function RedButtonListener(touch)
 	end
 
 	if (touch.phase == "ended") then
-		blueButton.isVisible = false
-		redButton.isVisible = true
-		textObject.isVisible = true
+		blueButton.isVisible = true
+		redButton.isVisible = false
+		textObject.isVisible = false
+		Dude.isVisible = false
 	end
 end
 
