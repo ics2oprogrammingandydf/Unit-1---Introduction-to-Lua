@@ -40,10 +40,17 @@ local function AskQuestion()
 	questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
 end
 
+-- making the local function that hides the text
 local function HideCorrect()
 	correctObject.isVisible = false
 	AskQuestion()
 end
+
+local function HideIncorrect()
+	incorrectObject.isVisible = false
+end
+
+
 
 local function numericFieldListener( event )
 
@@ -53,7 +60,7 @@ local function numericFieldListener( event )
 		--clear text field
 		event.target.text = ""
 
-	elseif event.phase == "submitted" then
+	elseif ( event.phase == "submitted" ) then
 
 		--when the answer is submitted (enter key is pressed) set user input to user's answer
 		userAnswer = tonumber(event.target.text)
@@ -62,6 +69,10 @@ local function numericFieldListener( event )
 		if (userAnswer == correctAnswer) then
 			correctObject.isVisible = true
 			timer.performWithDelay(200, HideCorrect)
+
+			elseif (userAnswer +- correctAnswer) then
+			incorrectObject.isVisible = true
+			timer.performWithDelay(200, HideIncorrect)
 		end
 	end
 end
