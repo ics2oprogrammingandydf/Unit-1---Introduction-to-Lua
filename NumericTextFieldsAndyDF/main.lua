@@ -24,6 +24,17 @@ local correctAnswer
 local incorrectObject
 local incorrectAnswer
 
+----------------------------------------------------------------------------------------------
+-- SOUNDS
+----------------------------------------------------------------------------------------------
+
+-- correct sound
+local correctSound = audio.oadSound( "Sounds/correctSound.mp3" )
+local correctSoundChannel
+
+-- incorrect Sound
+local incorrectSound = audio.loadSound( "Sounds/incorrectSound.mp3" )
+local incorrectSoundChannel
 
 ----------------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -68,10 +79,16 @@ local function numericFieldListener( event )
 		-- if the users answer and correct answer are the same:
 		if (userAnswer == correctAnswer) then
 			correctObject.isVisible = true
+
+			correctSoundChannel = audio.play(correctSound)
+
 			timer.performWithDelay(200, HideCorrect)
 
 			elseif (userAnswer +- correctAnswer) then
 			incorrectObject.isVisible = true
+
+			incorrectSoundChannel = audio.play(incorrectSound)
+
 			timer.performWithDelay(200, HideIncorrect)
 		end
 	end
