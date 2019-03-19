@@ -29,7 +29,7 @@ local incorrectAnswer
 -- LOCAL FUNCTIONS
 ----------------------------------------------------------------------------------------------
 local function askQuestion()
-	randomOperator = math.random(1, 2)
+	randomOperator = math.random(1, 4)
 	if ( randomOperator == 1) then
 		--generate 2 random numbers between a max. and a min. number
 			randomNumber1 = math.random(0, 10)
@@ -48,6 +48,22 @@ local function askQuestion()
 
 		--create the question in text
 		questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
+	elseif ( randomOperator == 3) then
+		randomNumber1 = math.random(0, 10)
+		randomNumber2 = math.random(0, 10)
+
+		correctAnswer = randomNumber1 / randomNumber2
+
+		--create the question in text
+		questionObject.text = randomNumber1 .. " ÷ " .. randomNumber2 .. " = "
+	elseif (randomOperator == 4) then
+		randomNumber1 = math.random(5, 10)
+		randomNumber2 = math.random(0, 5)
+
+		correctAnswer = randomNumber1 - randomNumber2
+
+		--create the question in text
+		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
 	end
 end
 
@@ -121,30 +137,3 @@ numericField:addEventListener( "userInput", numericFieldListener)
 
 -- call the function to ask the question
 askQuestion()
-
---randomOperator = math.random(0, 2)
---if ( randomOperator == 1) then
-	--local function AskQuestion()
-		--generate 2 random numbers between a max. and a min. number
-		--randomNumber1 = math.random(0, 10)
-		--randomNumber2 = math.random(0, 10)
-
-		--correctAnswer = randomNumber1 * randomNumber2
-
-		--create the question in text
-		--questionObject.text = randomNumber1 .. " x " .. randomNumber2 .. " = "
-	--end
---end
-
---if ( randomOperator == 2) then
-	--local function AskQuestion()
-	--generate 2 random numbers between a max. and a min. number
-		--randomNumber1 = math.random(0, 10)
-		--randomNumber2 = math.random(0, 10)
-
-		--correctAnswer = randomNumber1 * randomNumber2
-
-		--create the question in text
-		--questionObject.text = randomNumber1 .. " x " .. randomNumber2 .. " = "
-	--end
---end
