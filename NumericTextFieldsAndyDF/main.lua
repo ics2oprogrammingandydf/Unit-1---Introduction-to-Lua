@@ -1,8 +1,8 @@
--- Title: NumericTextFields
+-- Title: MathFun
 -- Name: Your Name
 -- Course: ICS2O/3C
--- This program displays a math question and asks the user to answer in a numneric textfield.
---terminal.
+-- This program 
+----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
 --hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
@@ -28,40 +28,68 @@ local incorrectAnswer
 -- SOUNDS
 ----------------------------------------------------------------------------------------------
 
--- correct sound
-local correctSound = audio.oadSound( "Sounds/correctSound.mp3" )
+local correctSound = audio.loadSound( "Sounds/correctSound.mp3" )
 local correctSoundChannel
-
--- incorrect Sound
-local incorrectSound = audio.loadSound( "Sounds/incorrectSound.mp3" )
+local incorrectSound = audio.loadSound( "Sounds/wrongSound.mp3" )
 local incorrectSoundChannel
 
 ----------------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 ----------------------------------------------------------------------------------------------
+local function askQuestion()
+	randomOperator = math.random(1, 4)
+	if ( randomOperator == 1) then
+		--generate 2 random numbers between a max. and a min. number
+			randomNumber1 = math.random(0, 10)
+			randomNumber2 = math.random(0, 10)
 
-local function AskQuestion()
-	--generate 2 random numbers between a max. and a min. number
-	randomNumber1 = math.random(0, 10)
-	randomNumber2 = math.random(0, 10)
+			correctAnswer = randomNumber1 * randomNumber2
 
-	correctAnswer = randomNumber1 + randomNumber2
+			--create the question in text
+			questionObject.text = randomNumber1 .. " x " .. randomNumber2 .. " = "
+	elseif ( randomOperator == 2) then
+		--generate 2 random numbers between a max. and a min. number
+		randomNumber1 = math.random(0, 10)
+		randomNumber2 = math.random(0, 10)
 
-	--create the question in text
-	questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
+		correctAnswer = randomNumber1 + randomNumber2
+
+		--create the question in text
+		questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
+	elseif ( randomOperator == 3) then
+		randomNumber1 = math.random(0, 10)
+		randomNumber2 = math.random(0, 10)
+
+		correctAnswer = randomNumber1 / randomNumber2
+
+		--create the question in text
+		questionObject.text = randomNumber1 .. " ÷ " .. randomNumber2 .. " = "
+	elseif (randomOperator == 4) then
+		randomNumber1 = math.random(5, 10)
+		randomNumber2 = math.random(0, 5)
+
+		correctAnswer = randomNumber1 - randomNumber2
+
+		--create the question in text
+		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
+	end
 end
+
+
+
+
+
+
 
 -- making the local function that hides the text
 local function HideCorrect()
 	correctObject.isVisible = false
-	AskQuestion()
+	askQuestion()
 end
 
 local function HideIncorrect()
 	incorrectObject.isVisible = false
 end
-
-
 
 local function numericFieldListener( event )
 
@@ -79,16 +107,12 @@ local function numericFieldListener( event )
 		-- if the users answer and correct answer are the same:
 		if (userAnswer == correctAnswer) then
 			correctObject.isVisible = true
-
 			correctSoundChannel = audio.play(correctSound)
-
 			timer.performWithDelay(200, HideCorrect)
 
 			elseif (userAnswer +- correctAnswer) then
 			incorrectObject.isVisible = true
-
-			incorrectSoundChannel = audio.play(incorrectSound)
-
+			incorrectSoundChannel = audio.play(wrongSound)
 			timer.performWithDelay(200, HideIncorrect)
 		end
 	end
@@ -122,4 +146,4 @@ numericField:addEventListener( "userInput", numericFieldListener)
 ----------------------------------------------------------------------------------------------
 
 -- call the function to ask the question
-AskQuestion()
+askQuestion()
