@@ -15,6 +15,18 @@ local backgroundImage = display.newImageRect("images/background.png", 2048, 1536
 --character image with the width and height
 local beetleship = display.newImageRect("images/beetleship.png", 200, 200)
 
+----------------------------------------------------------------------------------------------
+-- SOUNDS
+----------------------------------------------------------------------------------------------
+
+local epicSound = audio.loadSound( "Sounds/bensound-epic.mp3" )
+local EpicSoundChannel
+
+EpicSoundChannel = audio.play(epicSound)
+
+--playing the sound
+
+
 --set the image to be transparent
 beetleship.alpha = 0
 
@@ -39,16 +51,6 @@ Runtime:addEventListener("enterFrame", MoveShip)
 ----------------------------------------------------------------------------------
 --global variables
 local scrollSpeed = -3
-
---character image with the width and height
-local octopus = display.newImageRect("images/octopus2.png", 200, 200)
-
---set the image to be transparent
-octopus.alpha = 1
-
---set initial x and y of the octopus
-octopus.x = 1024
-octopus.y = display.contentHeight/1.5
 
 --Function:MoveShip
 --Input; this function accepts and event listner
