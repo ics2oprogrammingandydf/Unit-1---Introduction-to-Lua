@@ -40,15 +40,6 @@ local function askQuestion()
 	randomOperator = math.random(1, 4)
 	if ( randomOperator == 1) then
 		--generate 2 random numbers between a max. and a min. number
-			randomNumber1 = math.random(0, 10)
-			randomNumber2 = math.random(0, 10)
-
-			correctAnswer = randomNumber1 * randomNumber2
-
-			--create the question in text
-			questionObject.text = randomNumber1 .. " x " .. randomNumber2 .. " = "
-	elseif ( randomOperator == 2) then
-		--generate 2 random numbers between a max. and a min. number
 		randomNumber1 = math.random(0, 10)
 		randomNumber2 = math.random(0, 10)
 
@@ -59,27 +50,8 @@ local function askQuestion()
 	elseif ( randomOperator == 3) then
 		randomNumber1 = math.random(0, 10)
 		randomNumber2 = math.random(0, 10)
-
-		correctAnswer = randomNumber1 / randomNumber2
-
-		--create the question in text
-		questionObject.text = randomNumber1 .. " ÷ " .. randomNumber2 .. " = "
-	elseif (randomOperator == 4) then
-		randomNumber1 = math.random(5, 10)
-		randomNumber2 = math.random(0, 5)
-
-		correctAnswer = randomNumber1 - randomNumber2
-
-		--create the question in text
-		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
 	end
 end
-
-
-
-
-
-
 
 -- making the local function that hides the text
 local function HideCorrect()

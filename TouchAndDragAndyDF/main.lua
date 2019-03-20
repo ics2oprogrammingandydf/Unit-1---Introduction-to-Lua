@@ -25,6 +25,12 @@ local alreadyTouchedGirl1 = false
 local alreadyTouchedGirl2 = false
 local alreadyTouchedGirl5 = false
 
+--------------------------------------------------------------------------------------------------------------------------
+-- SOUNDS
+local whackSound = audio.loadSound( "Sounds ;)/whack.mp3")
+local whackSoundChannel
+--------------------------------------------------------------------------------------------------------------------------
+
 --set the x and y of my girls ;) and octopus :(
 girl1.x = 400
 girl1.y = 500
@@ -40,6 +46,7 @@ girl5.y = 600
 --output: none
 --description: when girl2 is touched, move her
 local function Girl2Listener(touch)
+	whackSoundChannel = audio.play(whackSound)
 	if (touch.phase == "began")then
 		if (alreadyTouchedGirl1 == false) and (alreadyTouchedGirl5 == false) then
 			alreadyTouchedGirl2 = true
@@ -65,6 +72,7 @@ girl2:addEventListener("touch", Girl2Listener)
 --output: none
 --description: when girl1 is touched, move her
 local function Girl1Listener(touch)
+	whackSoundChannel = audio.play(whackSound)
 	if (touch.phase == "began")then
 		if (alreadyTouchedGirl2 == false) and (alreadyTouchedGirl5 == false) then
 			alreadyTouchedGirl1 = true
@@ -90,6 +98,7 @@ girl1:addEventListener("touch", Girl1Listener)
 --output: none
 --description: when girl5 is touched, move her
 local function Girl5Listener(touch)
+	whackSoundChannel = audio.play(whackSound)
 	if (touch.phase == "began")then
 		if (alreadyTouchedGirl2 == false) and (alreadyTouchedGirl1 == false) then
 			alreadyTouchedGirl5 = true
@@ -116,11 +125,4 @@ girl5:addEventListener("touch", Girl5Listener)
 --hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
---local Variables
-local background = display.newImageRect("Images/background.png", 2048, 1536)
-local yellowGirl = display.newImageRect("Images/yellowGirl.png", 150, 150)
-local yellowGirlWidth = yellowGirl.width
-local yellowGirlHeight = yellowGirl.height
-local BlueGirl = display.newImageRect("Images/blueGirl.png", 100, 100)
-local blueGirlWidth = blueGirl
 
