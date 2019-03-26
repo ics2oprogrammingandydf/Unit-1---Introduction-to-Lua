@@ -31,4 +31,12 @@ local ground = display.newImage("Physics/ground.png", 514, 750)
 	physics.addBody(ground, "static", { friction=0.5, bounce=0.8})
 --------------------------------------------------------------------
 
-local beam = display.newImage("Physics/beam.png", 345, 299)
+local beam = display.newImage("Physics/beam_long.png", 345, 299)
+
+-- rotate the beam
+beam:rotate(45)
+
+--send the beam to the back layer
+
+ --add the physics
+ physics.addBody(beam, "static", {friction=0.5, bounce=0.3})
