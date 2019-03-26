@@ -173,11 +173,11 @@ incorrectObject.isVisible = false
 numericField = native.newTextField( display.contentWidth/2, display.contentHeight/2, 150, 80 )
 numericField.inputType = "number"
 
-heart1 = display.newImageRect("Images/heart.png", 100, 100)
+heart1 = display.newImageRect("Images/Saradomin_armour_set_(lg)_equipped.png", 100, 100)
 heart1.x = display.contentHeight * 7 / 8
 heart1.y = display.contentWidth * 1 / 7
 
-heart2 = display.newImageRect("Images/heart.png", 100, 100)
+heart2 = display.newImageRect("Images/Saradomin_armour_set_(lg)_equipped.png", 100, 100)
 heart2.x = display.contentHeight * 6 / 7
 heart2.y =display.contentWidth * 1 / 7
 
