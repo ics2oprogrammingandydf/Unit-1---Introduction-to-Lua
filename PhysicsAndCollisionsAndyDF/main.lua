@@ -50,7 +50,7 @@ beam:rotate(45)
 
 local function firstBall()
 	--create the first ball
-	local ball1 = display.newImage("Physics/super_ball.png", 0, 0)
+	local ball1 = display.newImage("Physics/super_ball.png",100, 100)
 
 	--add to physics
 	physics.addBody(ball1, {density=0.1, friction=0.5, bounce=0.5, radius=25})
@@ -58,10 +58,11 @@ end
 
 --------------------------------------------------------------------
 local function secondBall()
-	local ball2 = display.newImage("Physics/super_ball.png", 0, 0)
+	local ball2 = display.newImage("Physics/super_ball.png", 300, 50)
 
 	--adding physics
 	physics.addBody(ball2, {density=1.0, friction=0.5, bounce=0.3, radius=12.5})
+		ball2:scale (0.5, 0.5)
 end
 
 --------------------------------------------------------------------
