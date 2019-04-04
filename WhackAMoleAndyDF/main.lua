@@ -6,14 +6,7 @@
 
 display.setStatusBar(display.HiddenStatusBar)
 
-local bkg = display.newRect( 0, 0, display.contentWidth, display.contentHeight)
-	display.setDefault("background", 153/255, 0/255, 0/255)
-
-	-- setting the position
-	bkg.anchorX = 0
-	bkg.anchorY = 0
-	bkg.x = 0
-	bkg.y = 0
+display.setDefault("background", 153/255, 0/255, 0/255)
 
 -- creating the mole
 local mole = display.newImage ( "Images/mole.png" , 0, 0 )
@@ -33,8 +26,11 @@ function PopUp( )
 	mole.x = math.random( 0, display.contentWidth )
 	mole.y = math.random( 0, display.contentHeight )
 	mole.isVisible = true
-
+	timer.performWithDelay (500, Hide)
 end
+
+local score = 0
+local scoreText = display.newText("score", display.contentWidth/2, display.contentHeight*2/3, nil,50 )
 
 --this function calls the popup function after 3 seconds
 function PopUpDelay( )
@@ -46,12 +42,13 @@ function Hide( )
 
 	--Changing Visibilty
 	mole.isVisible = false
+	PopUpDelay( )
 
 end
 
 --This function starts the game
 function GameStart( )
-	PopUpDelay
+	PopUpDelay()
 end
 
 -- this function increments the score only if the mole is clicked. It then displays the new score
@@ -59,8 +56,8 @@ function Whacked( event )
 
 	--If touch phase just started
 	if (event.phase == "began") then
-
-
+		score = score + 1
+		scoreText.text = " score = " .. score .. ""
 	end
 
 end
@@ -70,3 +67,4 @@ end
 mole:addEventListener( "touch", Whacked )
 
 -------------------------------------------------Start the game-----------------------------------------------------
+GameStart()

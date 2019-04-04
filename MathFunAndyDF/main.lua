@@ -50,33 +50,6 @@ local incorrectSoundChannel
 -- LOCAL FUNCTIONS
 ----------------------------------------------------------------------------------------------
 
-
-local function UpdateTime()
-
-	--decrement the numbers of seconds
-	secondsLeft = secondsLeft .. "5"
-
-	if ( secondsLeft == 0 ) then
-		--resets the number of seconds
-		secondsLeft = totalSeconds
-		lives = lives - 1
-		if (lives == 0) then
-			incorrectSoundChannel = audio.play(wrongSound)
-		if (lives == 2) then
-			heart2.isVisible = false
-		elseif (lives == 1) then
-			heart1.isVisible = false
-		end
-	end
-end
-
---function that calls the timer
-local function StartTimer()
-	--create the contdown timer thaty loops infinitely
-	countDownTimer = tiemr.performWithDelay( 1000, UpdateTime, 0)
-end
-
-
 local function askQuestion()
 	randomOperator = math.random(1, 4)
 	if ( randomOperator == 1) then
@@ -88,31 +61,31 @@ local function askQuestion()
 
 			--create the question in text
 			questionObject.text = randomNumber1 .. " x " .. randomNumber2 .. " = "
-	elseif ( randomOperator == 2) then
-		--generate 2 random numbers between a max. and a min. number
-		randomNumber1 = math.random(0, 10)
-		randomNumber2 = math.random(0, 10)
+		elseif ( randomOperator == 2) then
+			--generate 2 random numbers between a max. and a min. number
+			randomNumber1 = math.random(0, 10)
+			randomNumber2 = math.random(0, 10)
 
-		correctAnswer = randomNumber1 + randomNumber2
+			correctAnswer = randomNumber1 + randomNumber2
 
-		--create the question in text
-		questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
-	elseif ( randomOperator == 3) then
-		randomNumber1 = math.random(0, 10)
-		randomNumber2 = math.random(0, 10)
+			--create the question in text
+			questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
+		elseif ( randomOperator == 3) then
+			randomNumber1 = math.random(0, 10)
+			randomNumber2 = math.random(0, 10)
 
-		correctAnswer = randomNumber1 / randomNumber2
+			correctAnswer = randomNumber1 / randomNumber2
 
-		--create the question in text
-		questionObject.text = randomNumber1 .. " ÷ " .. randomNumber2 .. " = "
-	elseif (randomOperator == 4) then
-		randomNumber1 = math.random(5, 10)
-		randomNumber2 = math.random(0, 5)
+			--create the question in text
+			questionObject.text = randomNumber1 .. " ÷ " .. randomNumber2 .. " = "
+		elseif (randomOperator == 4) then
+			randomNumber1 = math.random(5, 10)
+			randomNumber2 = math.random(0, 5)
 
-		correctAnswer = randomNumber1 - randomNumber2
+			correctAnswer = randomNumber1 - randomNumber2
 
-		--create the question in text
-		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
+			--create the question in text
+			questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
 	end
 end
 
@@ -173,18 +146,9 @@ incorrectObject.isVisible = false
 numericField = native.newTextField( display.contentWidth/2, display.contentHeight/2, 150, 80 )
 numericField.inputType = "number"
 
-heart1 = display.newImageRect("Images/Saradomin_armour_set_(lg)_equipped.png", 100, 100)
-heart1.x = display.contentHeight * 7 / 8
-heart1.y = display.contentWidth * 1 / 7
-
-heart2 = display.newImageRect("Images/Saradomin_armour_set_(lg)_equipped.png", 100, 100)
-heart2.x = display.contentHeight * 6 / 7
-heart2.y =display.contentWidth * 1 / 7
-
 -- adding the listener
 numericField:addEventListener( "userInput", numericFieldListener)
 
-pointsObject = display.newTextField()
 
 ----------------------------------------------------------------------------------------------
 -- FUNCTION CALLS
