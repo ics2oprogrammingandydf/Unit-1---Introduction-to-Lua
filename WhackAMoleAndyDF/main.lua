@@ -9,7 +9,7 @@ display.setStatusBar(display.HiddenStatusBar)
 display.setDefault("background", 153/255, 0/255, 0/255)
 
 -- creating the mole
-local mole = display.newImage ( "Images/mole.png" , 0, 0 )
+local mole = display.newImage ( "Images/Saradomin_armour_set_(lg)_equipped.png" , 0, 0 )
 	mole:scale (0.3333333333333333333333333333333333333333333333333333333333, 0.3333333333333333333333333333333333333333333333333333333333)
 	
 	--setting the position
