@@ -9,6 +9,9 @@ local secondsLeft = 5
 local clockDownTimer
 local countDownTimer
 
+local audio.loadSound("Sounds/boo.mp3")
+local booChannel
+
 local lives = 3
 local heart1
 local heart2
@@ -25,12 +28,14 @@ local points
 local function UpdateTime()
 
 	--decrement the numbers of seconds
-	secondsLeft = secondsLeft .. ""
+	secondsLeft = secondsLeft - 1
 
 	if ( secondsLeft == 0 ) then
 		--resets the number of seconds
 		secondsLeft = totalSeconds
 		lives = lives - 1
+
+		audio.play 
 
 		if (lives == 2) then
 			heart2.isVisible = false
@@ -43,7 +48,7 @@ end
 --function that calls the timer
 local function StartTimer()
 	--create the contdown timer thaty loops infinitely
-	countDownTimer = tiemr.performWithDelay( 1000, UpdateTime, 0)
+	countDownTimer = timer.performWithDelay( 1000, UpdateTime, 0)
 
 end
 
